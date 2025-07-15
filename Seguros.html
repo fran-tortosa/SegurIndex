@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seguros</title>
+  <link rel="icon" type="image/png" href="seguros.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="title">Listado de seguros</h1>
+  <br>
+  <h2 class="add-title">Nombre a buscar:</h2>
+
+  <div class="controls">
+      <input type="text" id="searchInput" placeholder="Escribe el nombre del seguro..." class="search-input">
+    </label>
+  </div>
+
+  <table id="segurosTable">
+    <thead>
+      <tr>
+        <th>Nombre del seguro</th>
+        <th>Oficina</th>
+        <th>Designación de Beneficiarios Subsidiaria</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Filas dinámicas -->
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h2 class="add-title">Añadir Nuevo Seguro</h2>
+  <form id="addForm" class="add-form">
+    <input type="text" id="inputNombre" placeholder="Nombre del Seguro" required class="input-nombre">
+    <input type="text" id="inputOficina" placeholder="Oficina" required class="input-oficina">
+    <input type="text" id="inputTipo" placeholder="Beneficiarios" required class="input-tipo">
+    <button type="submit" class="button">Añadir Seguro</button>
+  </form>
+
+  <div class="xml-controls">
+    <button id="saveXmlBtn" class="button save-xml">Descargar XML</button>
+    <input type="file" id="loadXmlInput" accept=".xml">
+    <button id="clearFileBtn" class="button">Quitar archivo</button>
+  </div>
+  <br>
+	<p id="contadorFilas" class="contador-filas">Número de filas/seguros: 0</p>
+
+  <footer>
+    <p class="footer-author">Creado por: Francisco Antonio Tortosa López</p>
+    <p class="footer-version">Versión 1.0</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
