@@ -1,4 +1,4 @@
-Licencia: AGPL v3 + cláusula adicional de uso no comercial
+AGPL v3 + cláusula adicional de uso no comercial
 
 Este software está licenciado bajo la GNU Affero General Public License versión 3 (AGPLv3), con la siguiente condición adicional:
 
