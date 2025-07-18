@@ -1,4 +1,4 @@
-# 🛡️ Base de Datos Local de Seguros
+# 🛡️ Base de datos local de Seguros
 
 **Proyecto para tener de manera local, mediante `localStorage`, una base de datos de seguros donde buscar de forma ágil y sencilla una gran lista de registros.**
 
