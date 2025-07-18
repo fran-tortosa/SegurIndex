@@ -20,7 +20,6 @@ Cada acción de eliminación requiere confirmación para evitar pérdidas accide
 
 ✅ **Exportación / Importación de datos en XML:**  
 - Exporta todos los seguros a un archivo `.xml` que incluye:
-  - Fecha y hora del registro.
   - Todas las filas con la información completa de los seguros.
 - Importa el archivo `.xml` fácilmente para restaurar o trasladar tu base de datos a otro navegador/dispositivo.
 
