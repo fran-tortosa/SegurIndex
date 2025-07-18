@@ -14,16 +14,36 @@ function renderTable() {
   tableBody.innerHTML = '';
   let contador = 0;
   seguros.forEach((s, index) => {
-    if (!s.nombre.toLowerCase().includes(filtro)) return;
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${s.nombre}</td>
-      <td>${s.oficina}</td>
-      <td>${s.tipo}</td>
-      <td><button class="button delete" data-index="${index}">Eliminar</button></td>
-    `;
-    tableBody.appendChild(row);
-    contador++;
+      if (filtro && !s.nombre.toLowerCase().includes(filtro)) return;
+
+      const row = document.createElement('tr');
+
+      // Crear y añadir la celda del nombre
+      const tdNombre = document.createElement('td');
+      tdNombre.textContent = s.nombre; // Asigna como texto plano
+      row.appendChild(tdNombre);
+
+      // Crear y añadir la celda de la oficina
+      const tdOficina = document.createElement('td');
+      tdOficina.textContent = s.oficina; // Asigna como texto plano
+      row.appendChild(tdOficina);
+
+      // Crear y añadir la celda del tipo
+      const tdTipo = document.createElement('td');
+      tdTipo.textContent = s.tipo; // Asigna como texto plano
+      row.appendChild(tdTipo);
+
+      // Crear y añadir la celda con el botón de eliminar
+      const tdAcciones = document.createElement('td');
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'button delete';
+      deleteButton.dataset.index = index;
+      deleteButton.textContent = 'Eliminar';
+      tdAcciones.appendChild(deleteButton);
+      row.appendChild(tdAcciones);
+
+      tableBody.appendChild(row);
+      contador++;
   });
   contadorFilas.textContent = `Número de filas/seguros: ${contador}`;
 }

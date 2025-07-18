@@ -4,14 +4,27 @@ const saveXmlBtn = document.getElementById('saveXmlBtn');
 const loadXmlInput = document.getElementById('loadXmlInput');
 const clearFileBtn = document.getElementById('clearFileBtn');
 
+// Función de ayuda para caracteres especiales XML
+function escapeXml(unsafe) {
+    return unsafe.replace(/[<>&'"]/g, function (c) {
+        switch (c) {
+            case '<': return '&lt;';
+            case '>': return '&gt;';
+            case '&': return '&amp;';
+            case '\'': return '&apos;';
+            case '"': return '&quot;';
+        }
+    });
+}
 // Generar XML
 function generateXML() {
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<seguros>\n';
     seguros.forEach (s => {
         xml += '  <seguro>\n';
-        xml += `    <nombre>${s.nombre}</nombre>\n`;
-        xml += `    <oficina>${s.oficina}</oficina>\n`;
-        xml += `    <tipo>${s.tipo}</tipo>\n`;
+        // Se aplica la función escapeXml a cada dato
+        xml += `    <nombre>${escapeXml(s.nombre)}</nombre>\n`;
+        xml += `    <oficina>${escapeXml(s.oficina)}</oficina>\n`;
+        xml += `    <tipo>${escapeXml(s.tipo)}</tipo>\n`;
         xml += '  </seguro>\n';
    });
   xml += '</seguros>';
