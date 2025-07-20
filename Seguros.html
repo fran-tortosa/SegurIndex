@@ -48,8 +48,26 @@ Sitio web: https://www.emojione.com
 
   <footer>
     <p class="footer-author">Desarrollado por: Francisco Antonio Tortosa López</p>
-    <p class="footer-version">v0.4 | Licencia: AGPL v3 + cláusula adicional de uso no comercial</p>
+    <p class="footer-version">v0.4a | Licencia: AGPL v3 + cláusula adicional de uso no comercial</p>
   </footer>
+  
+ <div id="columnModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Editar columnas</h2>
+    <div id="columnNameInputs" class="column-name-inputs">
+    </div>
+         <button id="saveColumnChanges" class="button">Guardar Cambios</button>
+    </div>
+</div>
+<div id="filaModal" class="modal">
+   <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Añadir nueva fila</h2>
+      <div id="filaFormInputs" class="column-name-inputs"></div>
+      <button id="saveFilaBtn" class="button">Guardar fila</button>
+   </div>
+</div>
 
 	<script src="js/datos.js"></script>
 	<script src="js/interfaz.js"></script>
