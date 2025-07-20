@@ -1,0 +1,37 @@
+/* ====================
+   xml.css - Estilos de Controles XML
+   ==================== */
+
+/* Define los estilos para un contenedor de controles XML. */
+.xml-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing);
+  margin-bottom: var(--spacing);
+  flex-wrap: wrap;
+}
+
+/* Define el estilo para el input de tipo 'file' (para subir archivos) dentro de .xml-controls. */
+.xml-controls input[type='file'] {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  background: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+/* Define el estilo para el botón de "Examinar" o "Seleccionar archivo" dentro del input de tipo 'file'. */
+.xml-controls input[type='file']::-webkit-file-upload-button {
+  background: var(--border);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: background var(--transition);
+}

@@ -1,0 +1,28 @@
+/* ====================
+   footer.css - Estilos del Pie de Página
+   ==================== */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #1e2127;
+  border-top: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #abb2bf;
+  font-size: 0.8rem;
+  z-index: 100;
+}
+
+.footer-author, .footer-version {
+  margin: 0;
+}
+
+.footer-version {
+  text-align: right;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}

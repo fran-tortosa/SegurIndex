@@ -5,17 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Seguros</title>
 <!--
-Logo provided by Emoji One BW
-Website: https://www.emojione.com
+Logo proporcionado por: Emoji One BW
+Sitio web: https://www.emojione.com
 -->
   <link rel="icon" type="image/png" href="img/logo.png">
-  <link rel="stylesheet" href="css/diseño.css">
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/controles.css">
+  <link rel="stylesheet" href="css/tabla.css">
+  <link rel="stylesheet" href="css/xml.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/botones.css">
 </head>
 <body>
   <h1 class="title">Listado de seguros</h1>
-  <br>
   <h2 class="add-title">Nombre a buscar:</h2>
-
   <div class="controls">
       <input type="text" id="searchInput" placeholder="Escribe el nombre del seguro..." class="search-input">
   </div>
@@ -26,7 +29,7 @@ Website: https://www.emojione.com
         <th>Nombre del seguro</th>
         <th>Oficina</th>
         <th>Designación de Beneficiarios Subsidiaria</th>
-        <th>Acciones</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -51,12 +54,11 @@ Website: https://www.emojione.com
     <input type="file" id="loadXmlInput" accept=".xml">
     <button id="clearFileBtn" class="button">Quitar archivo</button>
   </div>
-  <br>
 	<p id="contadorFilas" class="contador-filas">Número de filas/seguros: 0</p>
 
   <footer>
     <p class="footer-author">Desarrollado por: Francisco Antonio Tortosa López</p>
-    <p class="footer-version">v0.2 | Licencia: AGPL v3 + cláusula adicional de uso no comercial</p>
+    <p class="footer-version">v0.3 | Licencia: AGPL v3 + cláusula adicional de uso no comercial</p>
   </footer>
 
 	<script src="js/datos.js"></script>

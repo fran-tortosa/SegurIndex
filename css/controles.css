@@ -1,0 +1,43 @@
+/* ====================
+   buscar.css - Estilos para Búsqueda
+   ==================== */
+
+/* Estilos para el contenedor de controles (usado para el input de búsqueda) */
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing);
+}
+
+/* Estilos para el campo de entrada de búsqueda */
+.search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.85rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--card-bg);
+  color: var(--text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+/* Estilos para el texto de marcador de posición (placeholder) del input de búsqueda */
+.search-input::placeholder {
+  color: #888;
+}
+
+/* Estilos para el input de búsqueda al estar enfocado (cuando se hace clic en él) */
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(97, 175, 239, 0.3);
+}
+
+/* Estilos para el contador de filas (texto que muestra cuántas filas hay) */
+.contador-filas {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-top: 1rem;
+  margin-bottom: var(--spacing);
+}

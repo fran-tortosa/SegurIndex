@@ -1,0 +1,65 @@
+/* ====================
+   botones.css - Estilos de Botones
+   ==================== */
+
+.button {
+  padding: 0.85rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.add-form .button {
+  flex: 1 1 180px;
+  background: var(--accent);
+  color: #fff;
+}
+
+.add-form .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.xml-controls button {
+}
+
+.xml-controls #saveXmlBtn {
+  background: var(--primary);
+  color: #fff;
+}
+
+.xml-controls #saveXmlBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.xml-controls #clearFileBtn {
+  background: #e06c75;
+  color: #fff;
+}
+
+.xml-controls #clearFileBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+#segurosTable .button.delete { 
+  background: var(--primary);
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+
+#segurosTable .button.delete:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,54 @@
+/* ====================
+   tabla.css - Estilos de la Tabla
+   ==================== */
+
+/* Estilos generales para la tabla con ID "segurosTable" */
+#segurosTable {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto var(--spacing);
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para las celdas de encabezado (<th>) y las celdas de datos (<td>) dentro de la tabla */
+#segurosTable th,
+#segurosTable td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Estilos específicos para las celdas de encabezado (<th>) de la tabla */
+#segurosTable th {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Estilos para las filas del cuerpo de la tabla (<tbody><tr>) */
+#segurosTable tbody tr {
+  transition: background-color var(--transition);
+}
+
+/* Estilos para las filas pares (segunda, cuarta, etc.) del cuerpo de la tabla */
+#segurosTable tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para las celdas de datos (<td>) */
+#segurosTable td {
+  border-right: 1px solid var(--border);
+}
+
+/* Estilos específicos para la última celda de datos (<td>) de cada fila */
+#segurosTable td:last-child {
+  border-right: none;
+}
