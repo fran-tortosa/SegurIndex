@@ -15,6 +15,7 @@ Sitio web: https://www.emojione.com
   <link rel="stylesheet" href="css/xml.css">
   <link rel="stylesheet" href="css/footer.css">
   <link rel="stylesheet" href="css/botones.css">
+  <link rel="stylesheet" href="css/columna.css">
 </head>
 <body>
   <h1 class="title">Listado de seguros</h1>
@@ -32,37 +33,28 @@ Sitio web: https://www.emojione.com
         <th></th>
       </tr>
     </thead>
-    <tbody>
-      <!-- Filas dinámicas -->
-    </tbody>
   </table>
   <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <h2 class="add-title">Añadir Nuevo Seguro</h2>
-  <form id="addForm" class="add-form">
-    <input type="text" id="inputNombre" placeholder="Nombre del Seguro" required class="input-nombre">
-    <input type="text" id="inputOficina" placeholder="Oficina" required class="input-oficina">
-    <input type="text" id="inputTipo" placeholder="Beneficiarios" required class="input-tipo">
-    <button type="submit" class="button">Añadir Seguro</button>
-  </form>
-
-  <div class="xml-controls">
-    <button id="saveXmlBtn" class="button save-xml">Descargar XML</button>
-    <input type="file" id="loadXmlInput" accept=".xml">
-    <button id="clearFileBtn" class="button">Quitar archivo</button>
-  </div>
-	<p id="contadorFilas" class="contador-filas">Número de filas/seguros: 0</p>
+  <div class="xml-controls">
+    <button id="saveXmlBtn" class="button save-xml">Descargar XML</button>
+    <input type="file" id="loadXmlInput" accept=".xml">
+    <button id="clearFileBtn" class="button">Quitar archivo</button>
+  </div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1rem;">
+	    <p id="contadorFilas" class="contador-filas" style="margin-bottom: 0;">Número de filas/seguros: 0</p>
+        <button id="editColumnsBtn" class="button" style="margin-bottom: 0;">Editar columnas</button>
+        <button id="addRowBtn" class="button" style="margin-bottom: 0;">Añadir fila</button>
+    </div>
 
   <footer>
     <p class="footer-author">Desarrollado por: Francisco Antonio Tortosa López</p>
-    <p class="footer-version">v0.3a | Licencia: AGPL v3 + cláusula adicional de uso no comercial</p>
+    <p class="footer-version">v0.4 | Licencia: AGPL v3 + cláusula adicional de uso no comercial</p>
   </footer>
 
 	<script src="js/datos.js"></script>
 	<script src="js/interfaz.js"></script>
 	<script src="js/xml.js"></script>
+	<script src="js/columna.js"></script>
+    <script src="js/fila.js"></script>
 </body>
 </html>
