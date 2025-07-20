@@ -8,33 +8,35 @@
 Logo proporcionado por: Emoji One BW
 Sitio web: https://www.emojione.com
 -->
-  <link rel="icon" type="image/png" href="img/logo.png">
-  <link rel="stylesheet" href="css/general.css">
-  <link rel="stylesheet" href="css/controles.css">
-  <link rel="stylesheet" href="css/tabla.css">
-  <link rel="stylesheet" href="css/xml.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/botones.css">
-  <link rel="stylesheet" href="css/columna.css">
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/controles.css">
+  <link rel="stylesheet" href="css/tabla.css">
+  <link rel="stylesheet" href="css/xml.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/botones.css">
+  <link rel="stylesheet" href="css/columna.css">
 </head>
 <body>
-  <h1 class="title">Listado de seguros</h1>
-  <h2 class="add-title">Nombre a buscar:</h2>
-  <div class="controls">
-      <input type="text" id="searchInput" placeholder="Escribe el nombre del seguro..." class="search-input">
-  </div>
+  <h1 class="title">Listado de seguros</h1>
+  <h2 class="add-title">Nombre a buscar:</h2>
+  <div class="controls">
+      <input type="text" id="searchInput" placeholder="Escribe el nombre del seguro..." class="search-input">
+  </div>
 
-  <table id="segurosTable">
-    <thead>
-      <tr>
-        <th>Nombre del seguro</th>
-        <th>Oficina</th>
-        <th>Designación de Beneficiarios Subsidiaria</th>
-        <th></th>
-      </tr>
-    </thead>
-  </table>
-  <br>
+  <table id="segurosTable">
+    <thead>
+      <tr>
+        <th>Nombre del seguro</th>
+        <th>Oficina</th>
+        <th>Designación de Beneficiarios Subsidiaria</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+<tbody></tbody>
+  </table>
+  <br>
+
   <div class="xml-controls">
     <button id="saveXmlBtn" class="button save-xml">Descargar XML</button>
     <input type="file" id="loadXmlInput" accept=".xml">
@@ -46,33 +48,32 @@ Sitio web: https://www.emojione.com
         <button id="addRowBtn" class="button" style="margin-bottom: 0;">Añadir fila</button>
     </div>
 
-  <footer>
-    <p class="footer-author">Desarrollado por: Francisco Antonio Tortosa López</p>
-    <p class="footer-version">v0.4a | Licencia: AGPL v3 + cláusula adicional de uso no comercial</p>
-  </footer>
-  
- <div id="columnModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Editar columnas</h2>
-    <div id="columnNameInputs" class="column-name-inputs">
+  <footer>
+    <p class="footer-author">Desarrollado por: Francisco Antonio Tortosa López</p>
+    <p class="footer-version">v0.4b | Licencia: AGPL v3 + cláusula adicional de uso no comercial</p>
+  </footer>
+
+    <div id="columnModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Editar columnas</h2>
+            <div id="columnNameInputs" class="column-name-inputs">
+                </div>
+            <button id="saveColumnChanges" class="button">Guardar Cambios</button>
+        </div>
     </div>
-         <button id="saveColumnChanges" class="button">Guardar Cambios</button>
-    </div>
-</div>
 <div id="filaModal" class="modal">
-   <div class="modal-content">
-      <span class="close-button">&times;</span>
-      <h2>Añadir nueva fila</h2>
-      <div id="filaFormInputs" class="column-name-inputs"></div>
-      <button id="saveFilaBtn" class="button">Guardar fila</button>
-   </div>
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Añadir nueva fila</h2>
+    <div id="filaFormInputs" class="column-name-inputs"></div>
+    <button id="saveFilaBtn" class="button">Guardar fila</button>
+  </div>
 </div>
 
-	<script src="js/datos.js"></script>
 	<script src="js/interfaz.js"></script>
 	<script src="js/xml.js"></script>
 	<script src="js/columna.js"></script>
-    <script src="js/fila.js"></script>
+
 </body>
 </html>

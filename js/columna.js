@@ -1,9 +1,6 @@
 // js/columna.js
 
-// Espera a que el DOM esté completamente cargado antes de ejecutar el script.
 document.addEventListener('DOMContentLoaded', () => {
-	
-	// Obtención de referencias a elementos del DOM.
     const editColumnsBtn = document.getElementById('editColumnsBtn');
     const columnModal = document.getElementById('columnModal');
     const closeButton = document.querySelector('.modal .close-button');
@@ -17,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputTipo = document.getElementById('inputTipo');
 
     // Estado interno para la gestión de columnas en el modal
-    let currentColumnNamesSnapshot = [];
-    let modalColumnDataState = [];
+    let currentColumnNamesSnapshot = []; // Almacena el estado de los nombres de las columnas de datos cuando se abre el modal
+    let modalColumnDataState = []; // Almacena el estado actual de los nombres de las columnas de datos manipulados en el modal
 
     // Referencias a los botones de añadir/quitar columna (se crearán dinámicamente)
     let addColumnBtn;
@@ -27,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Asegurar que al cargar la página esté oculto
     columnModal.classList.remove('is-open');
 
-	// Función para abrir el modal de edición de columnas.
     const openModal = () => {
         columnModal.classList.add('is-open');
 
@@ -75,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateModalButtonsState(); // Actualizar el estado de los botones de añadir/quitar
     };
 
-	// Función para cerrar el modal de edición de columnas.
     const closeModal = () => {
         columnModal.classList.remove('is-open');
     };
@@ -128,8 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
         columnNameInputsContainer.appendChild(actionsInputWrapper);
     };
 
-	// Para añadir una nueva columna.
     const handleAddColumn = () => {
+        // MODIFICACIÓN AQUÍ: Ahora el nuevo nombre predeterminado es "Nombre de columna"
         const newColName = `Nombre de columna`;
         modalColumnDataState.push(newColName);
         populateColumnInputs();
@@ -152,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-	// Botón para guardar cambios en las columnas.
+
     saveColumnChangesBtn.addEventListener('click', () => {
         const newNamesFromInputs = Array.from(columnNameInputsContainer.querySelectorAll('input[type="text"]:not(:disabled)'))
             .map(input => input.value.trim());
@@ -171,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const hasChanges = structuralChange || nameChange;
 
-		// Si hay cambios estructurales o de nombre, pedir confirmación al usuario.
         if (hasChanges) {
             const confirmado = confirm(
                 "Este cambio de nombres o estructura de la tabla realizará un borrado de los datos guardados. ¿Está de acuerdo?"
@@ -183,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (tbody) tbody.innerHTML = '';
         }
 
-		// Actualizar el encabezado de la tabla con los nuevos nombres de columna.
         const thead = segurosTable.querySelector('thead');
         thead.innerHTML = '';
 
@@ -198,11 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
         thead.appendChild(actionsTh);
 
         updateAddFormPlaceholders();
-		// Cerrar el modal.
         closeModal();
     });
 
-	// Función para actualizar los inputs del formulario de añadir seguro.
     const updateAddFormPlaceholders = () => {
         const headers = segurosTable.querySelectorAll('thead th');
         [
