@@ -2,6 +2,7 @@
    footer.css - Estilos del Pie de Página
    ==================== */
 
+/* Estilos para el elemento footer (pie de página) */
 footer {
   position: fixed;
   bottom: 0;
@@ -18,10 +19,12 @@ footer {
   z-index: 100;
 }
 
+/* Estilos para las clases .footer-author y .footer-version (para eliminar márgenes) */
 .footer-author, .footer-version {
   margin: 0;
 }
 
+/* Estilos específicos para la clase .footer-version */
 .footer-version {
   text-align: right;
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
