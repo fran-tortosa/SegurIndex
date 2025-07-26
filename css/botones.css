@@ -9,68 +9,36 @@
   border-radius: var(--radius);
   font-size: 1rem;
   cursor: pointer;
-  transition: transform var(--transition), box-shadow var(--transition);
   font-weight: 500;
   letter-spacing: 0.02em;
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-/* Estilos específicos para los botones dentro de un formulario con la clase 'add-form' */
-.add-form .button {
-  flex: 1 1 180px;
-  background: var(--accent);
-  color: #fff;
-}
-
-/* Efecto al pasar el ratón por encima de los botones dentro de 'add-form' */
-.add-form .button:hover {
+.button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos generales para los botones dentro de los controles XML (sin estilos específicos aquí, solo un selector de grupo) */
-/*
-.xml-controls button {
-}
-*/
-
-/* Estilos específicos para el botón con ID 'saveXmlBtn' dentro de los controles XML */
-.xml-controls #saveXmlBtn {
+/* Estilos específicos para el botón de 'Descargar XML' */
+#saveXmlBtn {
   background: var(--primary);
   color: #fff;
 }
 
-/* Efecto al pasar el ratón por encima del botón 'saveXmlBtn' */
-.xml-controls #saveXmlBtn:hover {
-  transform: translateY(-2px);
+/* El efecto hover se hereda de .button:hover, pero con una sombra más pronunciada */
+#saveXmlBtn:hover {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos específicos para el botón con ID 'clearFileBtn' dentro de los controles XML */
-.xml-controls #clearFileBtn {
-  background: #e06c75;
-  color: #fff;
-}
-
-/* Efecto al pasar el ratón por encima del botón 'clearFileBtn' */
-.xml-controls #clearFileBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Estilos para el botón con clase 'delete' dentro de la tabla 'segurosTable' */
-#segurosTable .button.delete { 
+/* Estilos para el botón 'Eliminar' dentro de la tabla */
+#segurosTable .button.delete {
   background: var(--primary);
   color: #fff;
   padding: 0.5rem 0.8rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  border: none;
-  font-size: 1rem;
   font-weight: 600;
-  transition: all var(--transition);
 }
 
-/* Efecto al pasar el ratón por encima del botón 'delete' en la tabla */
+/* El efecto hover se hereda, pero ajustamos la sombra y la traslación */
 #segurosTable .button.delete:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);

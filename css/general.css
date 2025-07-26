@@ -49,39 +49,23 @@ h1.title {
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos específicos para el subtítulo (h2.add-title) */
 h2.add-title {
   font-size: 1.5rem;
   color: var(--text);
 }
 
-/* Estilos para el contenedor de formularios de añadir elementos */
-.add-form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--spacing);
-  margin: 0 auto var(--spacing);
-  max-width: 1000px;
-  background-color: var(--card-bg);
-  padding: var(--spacing);
-  border-radius: var(--radius);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Estilos para los campos de entrada dentro del formulario de añadir */
-.add-form input {
-  flex: 1 1 220px;
+.search-input,
+.column-input-item input {
   padding: 0.85rem 1.25rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background-color: var(--bg);
+  background-color: var(--card-bg); /* Estilo que se había perdido */
   color: var(--text);
   transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-/* Estilos para los campos de entrada del formulario al estar enfocados (cuando se hace clic en ellos) */
-.add-form input:focus {
+.search-input:focus,
+.column-input-item input:focus {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(97, 175, 239, 0.3);

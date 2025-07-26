@@ -1,3 +1,7 @@
+/* ====================
+   columna.css - Estilos del Modal de Columnas
+   ==================== */
+
 /* Modal oculto por defecto y centrado cuando se abre */
 .modal {
   display: none;
@@ -12,7 +16,7 @@
   align-items: center;
 }
 
-/* Caja de contenido */
+/* Caja de contenido del modal */
 .modal-content {
   background-color: var(--card-bg);
   margin: auto;
@@ -26,7 +30,7 @@
   text-align: center;
 }
 
-/* Botón cerrar */
+/* Botón para cerrar el modal */
 .close-button {
   position: absolute;
   top: 10px;
@@ -40,7 +44,7 @@
   color: var(--primary);
 }
 
-/* Contenido dinámico del formulario */
+/* Contenido dinámico del formulario dentro del modal */
 .column-name-inputs {
   display: flex;
   flex-direction: column;
@@ -58,47 +62,15 @@
   color: var(--text);
 }
 .column-input-item input {
+  /* Los estilos de apariencia vienen de general.css */
   width: 100%;
-  padding: 0.85rem 1.25rem;
   font-size: 1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg);
-  color: var(--text);
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-.column-input-item input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(97, 175, 239, 0.3);
 }
 
-/* Botones uniformes */
-.button,
-#addRowBtn,
-#editColumnsBtn,
-#saveXmlBtn,
-#saveFilaBtn {
-  background: var(--primary);
-  color: #fff;
-  margin-top: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.button:hover,
-#addRowBtn:hover,
-#editColumnsBtn:hover,
-#saveXmlBtn:hover,
-#saveFilaBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
+/* Estilos para los botones de acción dentro del modal */
 .column-actions {
-    display: flex;
-    justify-content: center;
-    gap: 1rem; /* Espacio entre los botones */
-    margin-bottom: var(--spacing);
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: var(--spacing);
 }
