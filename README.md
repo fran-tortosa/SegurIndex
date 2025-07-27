@@ -2,7 +2,7 @@
 
 **Proyecto para tener de manera local, mediante `localStorage`, una base de datos de seguros donde buscar de forma ágil y sencilla una gran lista de registros.**
 
-<img width="1337" height="567" alt="image" src="https://github.com/user-attachments/assets/8f0d3442-93c6-4fb3-9a60-16586eeab772" />
+<img width="936" height="397" alt="image" src="https://github.com/user-attachments/assets/8f0d3442-93c6-4fb3-9a60-16586eeab772" />
 
 ---
 
@@ -11,10 +11,10 @@
 ✅ **Gestión dinámica de la tabla**
 
 - ✏️ Edita, añade y elimina columnas: Personaliza por completo la estructura de tu tabla. Puedes cambiar el nombre de las columnas, añadir nuevas o eliminar las que no necesites. El sistema te advertirá antes de realizar cambios que impliquen borrar los datos existentes.
-<img width="767" height="639" alt="image" src="https://github.com/user-attachments/assets/eeb1df70-9e34-452a-8f72-b08531cc6ee5" />
+<img width="537" height="447" alt="image" src="https://github.com/user-attachments/assets/eeb1df70-9e34-452a-8f72-b08531cc6ee5" />
 
 - ➕ Añade filas fácilmente: Un nuevo formulario modal te permite añadir seguros rellenando los campos que se corresponden con la estructura de columnas que tengas en ese momento.
-<img width="725" height="470" alt="image" src="https://github.com/user-attachments/assets/1ccf8099-9ecc-4060-a55f-90139b396c40" />
+<img width="508" height="329" alt="image" src="https://github.com/user-attachments/assets/1ccf8099-9ecc-4060-a55f-90139b396c40" />
 
 ✅ **Interfaz rápida y local:**  
 Toda la aplicación funciona directamente en tu navegador, sin necesidad de conexión a internet ni servidor.  
