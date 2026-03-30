@@ -132,11 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function generateXML() {
       const originalHeaders = getHeaders();
       let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<seguros>\n';
-      xml += '  <column_structure>\n';
+      xml += '  <estructura>\n'; // Etiqueta actualizada
       originalHeaders.forEach(label => {
-        xml += `    <column_name>${escapeXml(label)}</column_name>\n`;
+        xml += `    <nombre_columna>${escapeXml(label)}</nombre_columna>\n`; // Etiqueta actualizada
       });
-      xml += '  </column_structure>\n';
+      xml += '  </estructura>\n'; // Etiqueta actualizada
       window.seguros.forEach(obj => {
         xml += '  <seguro>\n';
         originalHeaders.forEach(originalHeader => {
@@ -191,14 +191,14 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           const segurosEl = Array.from(xmlDoc.getElementsByTagName('seguro'));
-          const structEl = xmlDoc.getElementsByTagName('column_structure')[0];
+         const structEl = xmlDoc.getElementsByTagName('estructura')[0];
           if (!structEl) {
-              alert('El archivo XML no es válido, no contiene la etiqueta <column_structure>.');
+              alert('El archivo XML no es válido, no contiene la etiqueta <estructura>.');
               loadXmlInput.value = '';
               return;
           }
           
-          const loadedHeaders = Array.from(structEl.getElementsByTagName('column_name')).map(cn => cn.textContent.trim());
+          const loadedHeaders = Array.from(structEl.getElementsByTagName('nombre_columna')).map(cn => cn.textContent.trim());
           const xmlTags = loadedHeaders.map(sanitizeXmlTag);
 
           if (loadedHeaders.length === 0) {
