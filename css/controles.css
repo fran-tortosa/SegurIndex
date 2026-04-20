@@ -23,8 +23,8 @@
 /* Estilos para el contador de filas (texto que muestra cuántas filas hay) */
 .contador-filas {
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text);
-  margin-top: 1rem;
+  margin-top: 0,8rem;
   margin-bottom: var(--spacing);
 }

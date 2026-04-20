@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // El contador total de filas no cambia con el filtro, siempre muestra el total.
-    if (contadorFilas) contadorFilas.textContent = `Número de filas/seguros: ${window.seguros.length}`;
+    if (contadorFilas) contadorFilas.textContent = `Número de filas: ${window.seguros.length}`;
   }
 
   searchInput?.addEventListener('input', handleFilterInput);

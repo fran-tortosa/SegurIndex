@@ -1,6 +1,4 @@
 // js/xml.js
-
-// Espera a que el DOM esté completamente cargado antes de ejecutar el script.
 document.addEventListener('DOMContentLoaded', () => {
   const STORAGE_KEY = 'segurosDatos';
   const saveXmlBtn = document.getElementById('saveXmlBtn');
@@ -8,103 +6,147 @@ document.addEventListener('DOMContentLoaded', () => {
   const segurosTable = document.getElementById('segurosTable');
   const tableBody = segurosTable.querySelector('tbody');
 
-    // Asegurarse de que window.seguros sea un array, inicializándolo si es necesario.
-    if (!Array.isArray(window.seguros)) {
-      window.seguros = [];
-    }
+  // VARIABLES PARA PODER MODIFICAR FILAS
+  let indiceEdicionActual = -1;
+  const editModal = document.getElementById('editRowModal');
+  const closeEditModalBtn = document.getElementById('closeEditModal');
+  const saveEditBtn = document.getElementById('saveEditRowBtn');
+  const editRowInputsContainer = document.getElementById('editRowInputs');
 
-    // Exponer funciones globales para que otros scripts puedan usarlas
-    window.saveStorage = saveStorage;
-    window.renderTable = renderTable;
+  if (!Array.isArray(window.seguros)) { window.seguros = []; }
 
-    // Funciones de almacenamiento y de obtención de cabeceras
-    function saveStorage() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(window.seguros));
-    }
-    
-    function getHeaders() {
-      let headers = [];
-      if (window.seguros.length > 0) {
-        // Usa las claves de todos los objetos para construir una lista completa de cabeceras
-        const allKeys = new Set();
-        window.seguros.forEach(obj => {
-          Object.keys(obj).forEach(key => allKeys.add(key));
-        });
-        headers = Array.from(allKeys);
-      } else {
-        // Si no hay datos, usa la cabecera actual de la tabla HTML
-        headers = Array.from(segurosTable.querySelectorAll('thead th'))
-          .filter(th => th.textContent.trim() !== 'Acciones')
-          .map(th => th.textContent.trim());
-      }
-      return headers;
-    }
+  window.saveStorage = saveStorage;
+  window.renderTable = renderTable;
 
-    // Renderizado de la tabla
-    function renderTable(dataToRender = window.seguros) {
-      // La estructura de la cabecera SIEMPRE se basa en los datos completos o la tabla original
-      const currentHeaders = getHeaders();
-      let thead = segurosTable.querySelector('thead');
-      if (!thead) {
-        thead = document.createElement('thead');
-        segurosTable.prepend(thead);
-      }
-      thead.innerHTML = '';
-
-      const theadRow = document.createElement('tr');
-      currentHeaders.forEach(header => {
-        const th = document.createElement('th');
-        th.textContent = header;
-        theadRow.appendChild(th);
+  function saveStorage() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(window.seguros));
+  }
+  
+  function getHeaders() {
+    let headers = [];
+    if (window.seguros.length > 0) {
+      const allKeys = new Set();
+      window.seguros.forEach(obj => {
+        Object.keys(obj).forEach(key => allKeys.add(key));
       });
-      const thAcc = document.createElement('th');
-      thAcc.textContent = 'Acciones';
-      theadRow.appendChild(thAcc);
-      thead.appendChild(theadRow);
+      headers = Array.from(allKeys);
+    } else {
+      headers = Array.from(segurosTable.querySelectorAll('thead th'))
+        .filter(th => th.textContent.trim() !== 'Acciones')
+        .map(th => th.textContent.trim());
+    }
+    return headers;
+  }
 
-      // El cuerpo de la tabla se renderiza con los datos proporcionados (filtrados o completos)
-      tableBody.innerHTML = '';
-      dataToRender.forEach((obj) => {
-        const tr = document.createElement('tr');
-        currentHeaders.forEach(key => {
-          const td = document.createElement('td');
-          td.textContent = obj[key] || '';
-          tr.appendChild(td);
-        });
-        const tdAcc = document.createElement('td');
-        const btn = document.createElement('button');
-        btn.textContent = 'Eliminar';
-        btn.className = 'button delete';
+  function renderTable(dataToRender = window.seguros) {
+    const currentHeaders = getHeaders();
+    let thead = segurosTable.querySelector('thead');
+    if (!thead) { thead = document.createElement('thead'); segurosTable.prepend(thead); }
+    thead.innerHTML = '';
 
-        btn.addEventListener('click', () => {
-          const pkKey = currentHeaders[0]; // Asume que la primera columna es la clave primaria
-          const pkValue = obj[pkKey];
+    const theadRow = document.createElement('tr');
+    currentHeaders.forEach(header => {
+      const th = document.createElement('th');
+      th.textContent = header;
+      theadRow.appendChild(th);
+    });
+    const thAcc = document.createElement('th');
+    thAcc.textContent = 'Acciones';
+    thAcc.style.display = 'none'; //
+    theadRow.appendChild(thAcc);
+    thead.appendChild(theadRow);
 
-          if (confirm(`¿Eliminar seguro "${pkValue || 'este elemento'}"?`)) {
-            const actualIndex = window.seguros.findIndex(item => item[pkKey] === pkValue);
-            if (actualIndex > -1) {
-              window.seguros.splice(actualIndex, 1);
-              saveStorage();
-              renderTable(); // Re-renderiza con los datos actualizados
-            }
+    tableBody.innerHTML = '';
+    dataToRender.forEach((obj, index) => {
+      const tr = document.createElement('tr');
+      currentHeaders.forEach(key => {
+        const td = document.createElement('td');
+        td.textContent = obj[key] || '';
+        tr.appendChild(td);
+      });
+
+      const tdAcc = document.createElement('td');
+      tdAcc.style.display = 'none'; //
+      
+      // BOTÓN MODIFICAR
+      const editBtn = document.createElement('button');
+      editBtn.textContent = 'Modificar';
+      editBtn.className = 'button edit';
+      editBtn.style.marginRight = "5px";
+      editBtn.onclick = () => abrirModalEdicion(index);
+      
+      // BOTÓN ELIMINAR
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'Eliminar';
+      deleteBtn.className = 'button delete';
+      deleteBtn.onclick = () => {
+        const pkKey = currentHeaders[0];
+        const pkValue = obj[pkKey];
+        if (confirm(`¿Eliminar seguro "${pkValue || 'este elemento'}"?`)) {
+          const actualIndex = window.seguros.findIndex(item => item[pkKey] === pkValue);
+          if (actualIndex > -1) {
+            window.seguros.splice(actualIndex, 1);
+            saveStorage();
+            renderTable();
           }
-        });
-        tdAcc.appendChild(btn);
-        tr.appendChild(tdAcc);
-        tableBody.appendChild(tr);
+        }
+      };
+
+      tdAcc.appendChild(editBtn);
+      tdAcc.appendChild(deleteBtn);
+      tr.appendChild(tdAcc);
+      tableBody.appendChild(tr);
+    });
+
+    const contador = document.getElementById('contadorFilas');
+    if (contador) contador.textContent = `Número de filas: ${window.seguros.length}`;
+  }
+
+  // LÓGICA DE EDICIÓN
+  function abrirModalEdicion(index) {
+    indiceEdicionActual = index;
+    const registro = window.seguros[index];
+    const headers = getHeaders();
+    editRowInputsContainer.innerHTML = '';
+
+    headers.forEach(key => {
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('column-input-item');
+      const label = document.createElement('label');
+      label.textContent = key;
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.value = registro[key] || '';
+      input.dataset.key = key;
+      wrapper.append(label, input);
+      editRowInputsContainer.appendChild(wrapper);
+    });
+
+    editModal.classList.add('is-open');
+  }
+
+  closeEditModalBtn.onclick = () => editModal.classList.remove('is-open');
+
+  saveEditBtn.onclick = () => {
+    if (indiceEdicionActual > -1) {
+      const inputs = editRowInputsContainer.querySelectorAll('input');
+      inputs.forEach(input => {
+        const key = input.dataset.key;
+        window.seguros[indiceEdicionActual][key] = input.value.trim();
       });
-
-      const contador = document.getElementById('contadorFilas');
-      if (contador) contador.textContent = `Número de filas/seguros: ${window.seguros.length}`;
+      saveStorage();
+      renderTable();
+      editModal.classList.remove('is-open');
     }
+  };
 
-    // Inicialización de datos al cargar la página
+    // INICIALIZAR DATOS AL CARGAR PÁGINA
     if (!Array.isArray(window.seguros) || window.seguros.length === 0) {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         window.seguros = JSON.parse(stored);
       } else {
-        // Si no hay localStorage, lee la tabla HTML inicial
+        // SI NO HAY LOCALSTORAGE, CARGA LA TABLA HTML
         const headersFromHtmlTable = getHeaders();
         Array.from(tableBody.rows).forEach(row => {
           const obj = {};
@@ -117,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Función para exportar a XML
+    // PARA EXPORTAR EN XML
     function escapeXml(str) {
       return String(str).replace(/[<>&'"]/g, c => ({
         '<': '&lt;', '>': '&gt;', '&': '&amp;', '\'': '&apos;', '"': '&quot;'
@@ -129,14 +171,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return sanitized || 'campo_desconocido';
     }
 
-    function generateXML() {
+function generateXML() {
       const originalHeaders = getHeaders();
       let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<seguros>\n';
-      xml += '  <estructura>\n'; // Etiqueta actualizada
+      xml += '  <estructura>\n';
       originalHeaders.forEach(label => {
-        xml += `    <nombre_columna>${escapeXml(label)}</nombre_columna>\n`; // Etiqueta actualizada
+        xml += `    <nombre_columna>${escapeXml(label)}</nombre_columna>\n`;
       });
-      xml += '  </estructura>\n'; // Etiqueta actualizada
+      xml += '  </estructura>\n';
       window.seguros.forEach(obj => {
         xml += '  <seguro>\n';
         originalHeaders.forEach(originalHeader => {
@@ -150,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return xml;
     }
 
-    // Función para descargar el XML
+    // PARA DESCARGAR EL XML
     saveXmlBtn.addEventListener('click', () => {
       const now = new Date();
       const pad = n => String(n).padStart(2, '0');
@@ -166,14 +208,14 @@ document.addEventListener('DOMContentLoaded', () => {
       URL.revokeObjectURL(url);
     });
 
-    // Función para cargar un XML
+    // PARA CARGAR UN XML
     loadXmlInput.addEventListener('change', e => {
       const file = e.target.files[0];
       if (!file) return;
   	
-  	// Parche de seguridad memoria
-  	const tamaño_max = 30 * 1024 * 1024 // Tamaño máximo del archivo .XML en 30MB
-  	// Comprobar tamaño del archivo
+  	// PARCHE SEGURIDAD DE MEMORIA
+  	const tamaño_max = 30 * 1024 * 1024 // TAMAÑO MAXIMO DEL ARCHIVO .XML EN 30MB
+  	// COMPROBAR TAMAÑO DEL ARCHIVO
   	if (file.size > tamaño_max) {
   		alert('El archivo es demasiado grande, contacte con el administrador.');
   		return;
@@ -191,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           const segurosEl = Array.from(xmlDoc.getElementsByTagName('seguro'));
-         const structEl = xmlDoc.getElementsByTagName('estructura')[0];
+          const structEl = xmlDoc.getElementsByTagName('estructura')[0];
           if (!structEl) {
               alert('El archivo XML no es válido, no contiene la etiqueta <estructura>.');
               loadXmlInput.value = '';
@@ -207,18 +249,18 @@ document.addEventListener('DOMContentLoaded', () => {
               return;
           }
 
-          // Pide confirmación si la estructura de la tabla cambia
+          // CONFIRMAR SI LA TABLA ES DIFERENTE
           const currentHeaders = getHeaders();
           const structureHasChanged = JSON.stringify(currentHeaders) !== JSON.stringify(loadedHeaders);
           
           if (structureHasChanged) {
               if (!confirm("La estructura de columnas del XML es diferente a la tabla actual. Si continúas, se reemplazarán las columnas y todos los datos actuales se borrarán. ¿Deseas continuar?")) {
-                  loadXmlInput.value = ''; // Resetea el input
-                  return; // Aborta la operación
+                  loadXmlInput.value = '';
+                  return;
               }
           }
 
-          // Procede a cargar los datos
+          // CARGA LOS DATOS
           const newSeguros = [];
           segurosEl.forEach(node => {
             const obj = {};
@@ -231,18 +273,18 @@ document.addEventListener('DOMContentLoaded', () => {
           
           window.seguros = newSeguros;
           saveStorage();
-          renderTable(); // Renderiza con la nueva estructura y datos
+          renderTable();
           
         } catch (error) {
           alert('Ocurrió un error al procesar el archivo XML.');
           console.error('Error durante la carga del XML:', error);
         } finally {
-          loadXmlInput.value = ''; // Limpia el input en cualquier caso
+          loadXmlInput.value = '';
         }
       };
       reader.readAsText(file);
     });
 
-    // Renderizado inicial al cargar la página
+    // RENDERIZADO INICIAL DE LA TABLA
     renderTable();
   });

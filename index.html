@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de seguros - v0.7a - Desarrollado por: Francisco Antonio Tortosa López - Licencia: AGPL v3 + cláusula adicional de uso no comercial</title>
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/controles.css">
+  <link rel="stylesheet" href="css/tabla.css">
+  <link rel="stylesheet" href="css/xml.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/botones.css">
+  <link rel="stylesheet" href="css/columna.css">
+</head>
+<body>
+  <h1 class="title">Listado de seguros</h1>
+  <h2 class="add-title">Nombre a buscar:</h2>
+
+  <div class="controls">
+      <input type="text" id="searchInput" placeholder="Escribe el nombre..." class="search-input">
+  </div>
+    
+  <div>  
+    <div class="xml-controls">
+      <button id="saveXmlBtn" class="button save-xml ">Descargar XML</button>
+      <input type="file" id="loadXmlInput" accept=".xml">
+      
+<button id="editColumnsBtn" class="button" style="display: none;">Editar columnas</button>
+<button id="addRowBtn" class="button" style="display: none;">Añadir fila</button>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1rem;">
+      <p id="contadorFilas" class="contador-filas" style="margin-bottom: 0;">Número de filas: 0</p>
+    </div>
+  </div> 
+  <br>
+
+  <table id="segurosTable">
+    <thead>
+      <tr>
+        <th>nombre</th>
+        <th>db</th>
+        <th style="display: none;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div id="columnModal" class="modal">
+      <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h2>Editar columnas</h2>
+          <div id="columnNameInputs" class="column-name-inputs"></div>
+          <button id="saveColumnChanges" class="button">Guardar Cambios</button>
+      </div>
+  </div>
+
+  <div id="filaModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Añadir nueva fila</h2>
+      <div id="filaFormInputs" class="column-name-inputs"></div>
+      <button id="saveFilaBtn" class="button">Guardar fila</button>
+    </div>
+  </div>
+
+  <div id="editRowModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeEditModal">&times;</span>
+      <h2>Modificar fila</h2>
+      <div id="editRowInputs" class="column-name-inputs"></div>
+      <button id="saveEditRowBtn" class="button">Guardar cambios</button>
+    </div>
+  </div>
+
+  <script src="js/interfaz.js"></script>
+  <script src="js/xml.js"></script>
+  <script src="js/columna.js"></script>
+</body>
+</html>
